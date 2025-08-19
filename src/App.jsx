@@ -10,7 +10,7 @@ function App() {
       { id: "hero", label: "Inicio" },
       { id: "about", label: "Sobre mí" },
       { id: "skills", label: "Habilidades" },
-      { id: "projects", label: "Proyectos" },
+      // { id: "projects", label: "Proyectos" },
       { id: "contact", label: "Contacto" },
     ],
     []
@@ -77,7 +77,10 @@ function App() {
         infos.length > 1 ? (idx + inner) / (infos.length - 1) : 1;
 
       setActiveSection(infos[idx].id);
-      document.documentElement.setAttribute("data-active-section", infos[idx].id); // <- añade esto
+      document.documentElement.setAttribute(
+        "data-active-section",
+        infos[idx].id
+      ); // <- añade esto
       const timelineNav = document.querySelector(".timeline-nav");
       if (timelineNav) {
         timelineNav.style.setProperty(
@@ -144,9 +147,9 @@ function App() {
           return (
             <div
               key={section.id}
-              className={`timeline-item${
-                isActive ? " active" : ""
-              }${isVisited ? " visited" : ""}`}
+              className={`timeline-item${isActive ? " active" : ""}${
+                isVisited ? " visited" : ""
+              }`}
               role="button"
               tabIndex={0}
               aria-label={section.label}
@@ -155,9 +158,9 @@ function App() {
               onKeyDown={(e) => handleKeyNavItem(e, section.id)}
             >
               <div
-                className={`timeline-dot${
-                  isActive ? " active" : ""
-                }${isVisited ? " visited" : ""}`}
+                className={`timeline-dot${isActive ? " active" : ""}${
+                  isVisited ? " visited" : ""
+                }`}
               />
             </div>
           );
@@ -204,11 +207,15 @@ function App() {
                 />
                 <img src="https://skillicons.dev/icons?i=php" alt="PHP" />
                 <img
+                  src="https://skillicons.dev/icons?i=typescript"
+                  alt="TypeScript"
+                />
+                <img
                   src="https://skillicons.dev/icons?i=nodejs"
                   alt="Node.js"
                 />
               </div>
-              <p>Laravel PHP, Node.js, APIs REST</p>
+              <p>Laravel PHP, Node.js, TypeScript, APIs REST</p>
             </div>
 
             {/* Frontend Web */}
@@ -236,8 +243,9 @@ function App() {
                   alt="React Native"
                 />
                 <img src="https://skillicons.dev/icons?i=swift" alt="Swift" />
+                <img src="https://skillicons.dev/icons?i=kotlin" alt="Kotlin" />
               </div>
-              <p>Flutter, React Native, Swift (iOS)</p>
+              <p>Flutter, React Native, Swift (iOS), Kotlin</p>
             </div>
 
             {/* Bases de Datos */}
@@ -262,7 +270,7 @@ function App() {
       </section>
 
       {/* Sección Proyectos */}
-      <section id="projects" className="projects-section">
+      {/* <section id="projects" className="projects-section">
         <div className="container">
           <h2>Proyectos</h2>
           <div className="projects-grid">
@@ -280,28 +288,79 @@ function App() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Sección Contacto */}
       <section id="contact" className="contact-section">
         <div className="container">
           <h2>Contacto</h2>
-          <p>¿Interesado en trabajar juntos? ¡Hablemos!</p>
-          <div className="contact-links">
-            <a href="mailto:tu@email.com">Email</a>
-            <a
-              href="https://linkedin.com/in/tu-perfil"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://github.com/tu-usuario"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
+
+          {/* Estado de disponibilidad */}
+          <div className="availability-badge">
+            <span className="availability-indicator"></span>
+            <p>Disponible para nuevos proyectos</p>
+          </div>
+
+          <p className="contact-intro">
+            ¿Necesitas un desarrollador fullstack para tu próximo proyecto?
+            Estoy disponible para trabajos freelance, colaboraciones y
+            consultoría técnica.
+          </p>
+
+          <div className="contact-grid">
+            {/* Columna izquierda: Redes profesionales */}
+            <div className="contact-column">
+              <h3>Redes Profesionales</h3>
+              <div className="contact-links">
+                <a
+                  href="https://www.linkedin.com/in/no%C3%A9-alejandro-rodr%C3%ADguez-moto-a48431290/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-link"
+                >
+                  <i className="contact-icon linkedin"></i>
+                  <span>Noé Alejandro</span>
+                </a>
+                <a
+                  href="https://github.com/NoeOnDev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-link"
+                >
+                  <i className="contact-icon github"></i>
+                  <span>NoeOnDev</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Columna derecha: Contacto directo */}
+            <div className="contact-column">
+              <h3>Contacto Directo</h3>
+              <div className="contact-links">
+                <a href="mailto:alxg5516@email.com" className="contact-link">
+                  <i className="contact-icon email"></i>
+                  <span>alxg5516@email.com</span>
+                </a>
+                <a
+                  href="https://wa.me/529614496689"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-link"
+                >
+                  <i className="contact-icon whatsapp"></i>
+                  <span>+52 961 449 6689</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Call to action */}
+          <div className="contact-cta">
+            <p>
+              ¡Contáctame para discutir cómo puedo ayudarte con tu proyecto!
+            </p>
+            <a href="mailto:tu@email.com" className="cta-button">
+              Iniciar Proyecto
             </a>
           </div>
         </div>
