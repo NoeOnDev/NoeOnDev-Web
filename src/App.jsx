@@ -359,7 +359,12 @@ function App() {
             <p>
               ¡Contáctame para discutir cómo puedo ayudarte con tu proyecto!
             </p>
-            <a href="mailto:tu@email.com" className="cta-button">
+            <a
+              href="https://wa.me/529614496689"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-button"
+            >
               Iniciar Proyecto
             </a>
           </div>
