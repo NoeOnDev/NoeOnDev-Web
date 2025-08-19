@@ -1,0 +1,598 @@
+/* ====================================================================
+   APP.CSS - ESTILOS ESPECÍFICOS DEL PORTAFOLIO
+   ====================================================================
+   
+   Tabla de contenido:
+   1. Reset y configuración base
+   2. Layout principal
+   3. Sección Hero
+   4. Secciones de contenido
+   5. Sección Habilidades
+   6. Sección Proyectos
+   7. Sección Contacto
+   8. Timeline Navigation (minimal)
+   9. Animaciones y keyframes
+   10. Media queries responsivos
+   ================================================================== */
+
+/* ====================================================================
+   1. RESET Y CONFIGURACIÓN BASE
+   ================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Elementos legacy (mantener para compatibilidad) */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em var(--color-accent-primary));
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em var(--color-accent-secondary));
+}
+
+.card {
+  padding: 2em;
+  background-color: var(--color-surface-primary);
+  border: 1px solid var(--color-surface-tertiary);
+}
+
+.read-the-docs {
+  color: var(--color-text-muted);
+}
+
+/* ====================================================================
+   2. LAYOUT PRINCIPAL
+   ================================================================== */
+.portfolio {
+  width: 100%;
+}
+
+/* Container general reutilizable */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ====================================================================
+   3. SECCIÓN HERO
+   ================================================================== */
+.hero-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-primary);
+  color: var(--color-text-inverse);
+  text-align: center;
+  position: relative;
+}
+
+.hero-content {
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.hero-name {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--color-text-inverse);
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  opacity: 0.9;
+  color: var(--color-text-inverse);
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+/* Indicador de scroll */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: var(--color-text-inverse);
+  animation: fadeInUpCentered 1s ease-out 0.6s both;
+}
+
+.scroll-arrow {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  color: var(--color-text-inverse);
+  animation: bounce 2s infinite;
+}
+
+/* ====================================================================
+   4. SECCIONES DE CONTENIDO
+   ================================================================== */
+
+/* Layout común para todas las secciones */
+.about-section,
+.skills-section,
+.projects-section,
+.contact-section {
+  padding: 5rem 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* Colores de fondo por sección */
+.about-section {
+  background-color: var(--color-surface-secondary);
+}
+
+.skills-section {
+  background-color: var(--color-surface-primary);
+}
+
+.projects-section {
+  background-color: var(--color-surface-secondary);
+}
+
+.contact-section {
+  background: var(--gradient-secondary);
+  color: var(--color-text-inverse);
+}
+
+/* Títulos de sección */
+.about-section h2,
+.skills-section h2,
+.projects-section h2 {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.contact-section h2 {
+  color: var(--color-text-inverse);
+  font-weight: 600;
+}
+
+/* Sección Sobre mí */
+.about-section p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--color-text-secondary);
+}
+
+/* ====================================================================
+   5. SECCIÓN HABILIDADES
+   ================================================================== */
+.skills-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Grid de habilidades */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Tarjetas de categorías de habilidades */
+.skill-category {
+  background: var(--color-surface-primary);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--color-surface-tertiary);
+}
+
+.skill-category:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.skill-category h3 {
+  color: var(--color-accent-primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+/* Iconos de habilidades */
+.skills-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.skills-icons img {
+  width: 48px;
+  height: 48px;
+  transition: transform 0.3s ease;
+  filter: grayscale(0.3);
+}
+
+.skills-icons img:hover {
+  transform: scale(1.2);
+  filter: grayscale(0);
+}
+
+.skill-category p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* ====================================================================
+   6. SECCIÓN PROYECTOS
+   ================================================================== */
+
+/* Grid de proyectos */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Tarjetas de proyectos */
+.project-card {
+  background: var(--color-surface-primary);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--color-surface-tertiary);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.project-card h3 {
+  color: var(--color-accent-primary);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.project-card p {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* ====================================================================
+   7. SECCIÓN CONTACTO
+   ================================================================== */
+.contact-section p {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: var(--color-text-inverse);
+}
+
+/* Enlaces de contacto */
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.contact-links a {
+  color: var(--color-text-inverse);
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border: 2px solid var(--color-text-inverse);
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.contact-links a:hover {
+  background-color: var(--color-text-inverse);
+  color: var(--color-primary);
+}
+
+/* ====================================================================
+   8. TIMELINE NAVIGATION (minimal)
+   ================================================================== */
+.timeline-nav {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: var(--overlay-blur);
+  border: 1px solid var(--overlay-light);
+  border-radius: 20px;
+  padding: 0.75rem 0.4rem;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+/* --- Corrige el stacking: progreso y track detrás; dots encima --- */
+.timeline-line {
+  position: absolute;
+  width: 2px;
+  top: var(--timeline-start, 1rem);
+  height: calc(var(--timeline-end, 100%) - var(--timeline-start, 2rem));
+  background: var(--overlay-medium);
+  border-radius: 2px;
+  opacity: 1;
+  z-index: 0;
+  /* detrás */
+}
+
+.timeline-nav::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  top: var(--timeline-start, 1rem);
+  height: calc(var(--timeline-end, 100%) - var(--timeline-start, 2rem));
+  background: var(--color-accent-primary);
+  border-radius: 2px;
+  transform-origin: top;
+  transform: scaleY(var(--scroll-progress-ratio, 0));
+  transition: transform 0.25s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.timeline-item {
+  position: relative;
+  margin: 0.75rem 0;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.timeline-dot {
+  position: relative;
+  z-index: 2;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-surface-primary);
+  border: 1px solid var(--color-surface-tertiary);
+  transition: border-color 150ms ease, transform 150ms ease, background-color 150ms ease;
+}
+
+.timeline-dot.visited {
+  background: var(--color-accent-primary);
+  border-color: var(--color-accent-primary);
+}
+
+.timeline-dot.active {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  transform: scale(1.2);
+}
+
+/* ====================================================================
+   9. ANIMACIONES Y KEYFRAMES
+   ================================================================== */
+
+/* Animación de entrada desde abajo */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animación específica para elementos centrados */
+@keyframes fadeInUpCentered {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Animación de rebote */
+@keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-10px);
+  }
+
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Animación de rotación del logo (legacy) */
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+/* ====================================================================
+   10. MEDIA QUERIES RESPONSIVOS
+   ================================================================== */
+
+/* ---- TIMELINE RESPONSIVO ---- */
+@media (max-width: 1024px) {
+  .timeline-nav {
+    right: 1rem;
+    padding: 0.75rem 0.25rem;
+  }
+
+  .timeline-dot {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline-nav {
+    right: 0.5rem;
+    padding: 0.5rem 0.25rem;
+  }
+
+  .timeline-item {
+    margin: 0.6rem 0;
+  }
+
+  .timeline-dot {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-nav {
+    display: none;
+  }
+}
+
+/* ---- GRID DE HABILIDADES RESPONSIVO ---- */
+@media (min-width: 1200px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .skill-category {
+    min-height: unset;
+    padding: 1.5rem;
+  }
+}
+
+/* ---- RESPONSIVO GENERAL ---- */
+@media (max-width: 768px) {
+
+  /* Hero section */
+  .hero-name {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  /* Títulos de sección */
+  .about-section h2,
+  .skills-section h2,
+  .projects-section h2,
+  .contact-section h2 {
+    font-size: 2rem;
+  }
+
+  /* Habilidades */
+  .skill-category h3 {
+    font-size: 1.5rem;
+  }
+
+  .skills-icons {
+    gap: 1rem;
+  }
+
+  .skills-icons img {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Proyectos */
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Contacto */
+  .contact-links {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-icons {
+    gap: 0.8rem;
+  }
+
+  .skills-icons img {
+    width: 36px;
+    height: 36px;
+  }
+}

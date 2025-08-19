@@ -1,0 +1,200 @@
+/* ====================================================================
+   INDEX.CSS - ESTILOS GLOBALES Y BASE
+   ====================================================================
+   
+   Tabla de contenido:
+   1. Variables CSS y configuración global
+   2. Reset y estilos base
+   3. Tipografía global
+   4. Elementos interactivos
+   5. Media queries para temas
+   ================================================================== */
+
+/* ====================================================================
+   1. VARIABLES CSS Y CONFIGURACIÓN GLOBAL
+   ================================================================== */
+:root {
+  /* Paleta base (Light) */
+  --color-primary: #0f172a;          /* Slate 900 */
+  --color-secondary: #1e293b;        /* Slate 800 */
+  --color-tertiary: #334155;         /* Slate 700 */
+
+  /* Superficies */
+  --color-surface-primary: #ffffff;  /* Fondo base */
+  --color-surface-secondary: #f8fafc;/* Slate 50 */
+  --color-surface-tertiary: #e2e8f0; /* Slate 200 */
+  --color-surface-dark: #0f172a;     /* Fondo oscuro para contrastes */
+
+  /* Texto */
+  --color-text-primary: #0f172a;     /* Slate 900 */
+  --color-text-secondary: #334155;   /* Slate 700 */
+  --color-text-terciary: #64748b;    /* Slate 500 */
+  --color-text-inverse: #ffffff;     /* Para fondos oscuros/gradientes */
+  --color-text-muted: #94a3b8;       /* Slate 400 */
+
+  /* Acentos */
+  --color-accent-primary: #6366f1;   /* Indigo 500 */
+  --color-accent-secondary: #a78bfa; /* Violet 500 */
+  --color-accent-hover: #4f46e5;     /* Indigo 600 */
+
+  /* Gradientes */
+  --gradient-primary: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); /* Hero oscuro */
+  --gradient-secondary: linear-gradient(135deg, #6366f1 0%, #a78bfa 100%); /* Acento */
+  --gradient-subtle: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+
+  /* Sombras */
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.12);
+  --shadow-md: 0 4px 6px rgba(15, 23, 42, 0.1);
+  --shadow-lg: 0 8px 25px rgba(15, 23, 42, 0.15);
+  --shadow-xl: 0 15px 35px rgba(15, 23, 42, 0.2);
+
+  /* Overlays / glassmorphism */
+  --overlay-light: rgba(15, 23, 42, 0.06);
+  --overlay-medium: rgba(15, 23, 42, 0.12);
+  --overlay-dark: rgba(15, 23, 42, 0.45);
+  --overlay-blur: rgba(255, 255, 255, 0.26);
+
+  /* ---- CONFIGURACIÓN TIPOGRÁFICA ---- */
+
+  /* Fuentes */
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* Esquema de colores */
+  color-scheme: light dark;
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-primary);
+
+  /* Optimizaciones de renderizado */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ====================================================================
+   2. RESET Y ESTILOS BASE
+   ================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-primary);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#root {
+  width: 100%;
+}
+
+/* ====================================================================
+   3. TIPOGRAFÍA GLOBAL
+   ================================================================== */
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  color: var(--color-text-primary);
+}
+
+/* ====================================================================
+   4. ELEMENTOS INTERACTIVOS
+   ================================================================== */
+
+/* Enlaces */
+a {
+  font-weight: 500;
+  color: var(--color-accent-primary);
+  text-decoration: inherit;
+  transition: color 0.25s ease;
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+/* Botones */
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-primary);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto var(--color-accent-primary);
+}
+
+/* ====================================================================
+   5. MEDIA QUERIES PARA TEMAS
+   ================================================================== */
+@media (prefers-color-scheme: light) {
+  :root {
+    color: var(--color-text-primary);
+    background-color: var(--color-surface-primary);
+  }
+
+  a:hover {
+    color: var(--color-accent-hover);
+  }
+
+  button {
+    background-color: var(--color-surface-secondary);
+    color: var(--color-text-primary);
+  }
+}
+
+/* Tema oscuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #e2e8f0;           /* Texto/acento base claro */
+    --color-secondary: #cbd5e1;
+    --color-tertiary: #94a3b8;
+
+    --color-surface-primary: #0f172a;   /* Slate 900 */
+    --color-surface-secondary: #111827; /* Gray 900 */
+    --color-surface-tertiary: #1e293b;  /* Slate 800 */
+    --color-surface-dark: #020617;      /* Slate 950 */
+
+    --color-text-primary: #e2e8f0;      /* Slate 200 */
+    --color-text-secondary: #cbd5e1;    /* Slate 300 */
+    --color-text-tertiary: #94a3b8;     /* Slate 400 */
+    --color-text-inverse: #ffffff;      /* Legible sobre acentos/gradientes */
+    --color-text-muted: #94a3b8;
+
+    --color-accent-primary: #818cf8;    /* Indigo 400 */
+    --color-accent-secondary: #a78bfa;  /* Violet 400 */
+    --color-accent-hover: #6366f1;      /* Indigo 500 */
+
+    --gradient-primary: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    --gradient-secondary: linear-gradient(135deg, #6366f1 0%, #a78bfa 100%);
+
+    --overlay-light: rgba(255, 255, 255, 0.08);
+    --overlay-medium: rgba(255, 255, 255, 0.16);
+    --overlay-dark: rgba(0, 0, 0, 0.5);
+    --overlay-blur: rgba(2, 6, 23, 0.4); /* glass oscuro sutil */
+  }
+}
